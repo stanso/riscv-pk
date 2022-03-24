@@ -585,6 +585,12 @@ static int sys_stub_nosys()
   return -ENOSYS;
 }
 
+unsigned long sys_insnctr()
+{
+  unsigned long t = rdinstret64();
+  return t;
+}
+
 long do_syscall(long a0, long a1, long a2, long a3, long a4, long a5, unsigned long n)
 {
   const static void* syscall_table[] = {
@@ -639,6 +645,8 @@ long do_syscall(long a0, long a1, long a2, long a3, long a4, long a5, unsigned l
     [SYS_set_tid_address] = sys_stub_nosys,
     [SYS_set_robust_list] = sys_stub_nosys,
     [SYS_madvise] = sys_stub_nosys,
+
+    [SYS_insnctr] = sys_insnctr,
   };
 
   const static void* old_syscall_table[] = {

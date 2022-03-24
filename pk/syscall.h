@@ -58,6 +58,8 @@
 #define SYS_madvise 233
 #define SYS_statx 291
 
+#define SYS_insnctr 1023
+
 #define OLD_SYSCALL_THRESHOLD 1024
 #define SYS_open 1024
 #define SYS_link 1025
